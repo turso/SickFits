@@ -19,7 +19,7 @@ class Item extends Component {
         {item.image && <img src={item.image} alt={item.title} />}
         <Title>
           <Link
-            // as={`/item/${item.title}`}
+            as={`/item/${item.title}`}
             href={{
               pathname: '/item',
               query: { id: item.id }
@@ -33,6 +33,7 @@ class Item extends Component {
 
         <div className="buttonList">
           <Link
+            as={`/update/${item.title}`}
             href={{
               pathname: 'update',
               query: { id: item.id }
