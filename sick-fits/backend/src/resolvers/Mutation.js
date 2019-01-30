@@ -322,27 +322,21 @@ const Mutations = {
         item { title price id description image }
       }}`
     );
-
     // 2. recalculate the total for the price
     const amount = user.cart.reduce(
       (tally, cartItem) => tally + cartItem.item.price * cartItem.quantity,
       0
     );
     console.log(`Going to charge for a total of ${amount}`);
-
-    // 3. Create the stripe charge (turn token into €€€€)
+    // 3. Create the stripe charge (turn token into $$$)
     const charge = await stripe.charges.create({
       amount,
       currency: 'EUR',
       source: args.token
     });
-
     // 4. Convert the CartItems to OrderItems
-
     // 5. create the Order
-
     // 6. Clean up - clear the users cart, delete cartItems
-
     // 7. Return the Order to the client
   }
 };
