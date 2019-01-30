@@ -28,17 +28,19 @@ function totalItems(cart) {
 }
 
 export default class TakeMyMoney extends Component {
-  onToken = (res, createOrder) => {
+  onToken = async (res, createOrder) => {
     console.log('On Token called');
     console.log(res);
+
     // manually call the mutatuon once we have the stripe token
-    createOrder({
+    const order = await createOrder({
       variables: {
         token: res.id
       }
     }).catch(err => {
       alert(err.message);
     });
+    console.log(order);
   };
 
   render() {
